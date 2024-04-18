@@ -1,0 +1,10 @@
+opencv-python
+flask
+matplotlib 
+numpy 
+mediapipe 
+
+
+pyQt5
+customtkinter 
+pillow

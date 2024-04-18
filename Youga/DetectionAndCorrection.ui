@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>947</width>
+    <height>693</height>
+   </rect>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>1031</width>
+    <height>701</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgba(0, 28, 41, 255);</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="1" column="0">
+     <layout class="QVBoxLayout" name="verticalLayout" stretch="1,10,1">
+      <item>
+       <widget class="QPlainTextEdit" name="result">
+        <property name="font">
+         <font>
+          <family>FreeMono</family>
+          <pointsize>31</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">border-color: rgb(246, 97, 81);
+background-color: rgb(203,  215, 211);
+border-radius:7px;
+text-align:center;
+
+
+color:rgb(0, 0, 0);</string>
+        </property>
+        <property name="plainText">
+         <string>Pose Name</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout" stretch="2,1">
+        <item>
+         <widget class="QLabel" name="cameraFeed">
+          <property name="styleSheet">
+           <string notr="true">border-color: rgb(246, 97, 81);
+background-color: rgb(14, 47, 63);
+border-radius:7px;
+
+text-align:center;
+border-color: rgb(255,255,255);
+border-width: 2px;
+border-style: solid;</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <layout class="QVBoxLayout" name="verticalLayout_2" stretch="1,2">
+          <item>
+           <widget class="QLabel" name="timer_label">
+            <property name="styleSheet">
+             <string notr="true">border-color: rgb(246, 97, 81);
+background-color: rgb(14, 47, 63);
+border-radius:7px;
+
+
+color:rgb(211, 217, 220);
+
+text-align:center;
+border-color: rgb(0,0,0);
+border-width: 2px;
+border-style: solid;</string>
+            </property>
+            <property name="text">
+             <string>TIMER</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="yogaPose">
+            <property name="styleSheet">
+             <string notr="true">border-color: rgb(246, 97, 81);
+background-color: rgb(14, 47, 63);
+border-radius:7px;
+
+
+color:rgb(211, 217, 220);
+
+text-align:center;
+border-color: rgb(0,0,0);
+border-width: 2px;
+border-style: solid;</string>
+            </property>
+            <property name="text">
+             <string>TextLabel</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_3" stretch="0,0">
+        <item>
+         <widget class="QTextEdit" name="textEdit">
+          <property name="font">
+           <font>
+            <family>FreeMono</family>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">border-color: rgb(246, 97, 81);
+background-color: rgb(14, 47, 63);
+border-radius:7px;
+
+text-align:center;
+border-color: rgb(0,0,0);
+border-width: 2px;
+border-style: solid;
+
+color:rgb(211, 217, 220);
+</string>
+          </property>
+          <property name="html">
+           <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'FreeMono'; font-size:11pt; font-weight:600; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:18pt;&quot;&gt;Corrections&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <layout class="QVBoxLayout" name="verticalLayout_3">
+          <item>
+           <widget class="QPushButton" name="nextButton">
+            <property name="font">
+             <font>
+              <family>FreeMono</family>
+              <weight>75</weight>
+              <bold>true</bold>
+             </font>
+            </property>
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">border-color: rgb(246, 97, 81);
+background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(105, 128, 140, 255), stop:1 rgba(110, 135, 145, 255));
+border-radius:0px;
+width: 100px;
+height: 50px;
+
+color:rgb(211, 217, 220);</string>
+            </property>
+            <property name="text">
+             <string>Next</string>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>20</width>
+              <height>30</height>
+             </size>
+            </property>
+            <property name="flat">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="exitButton">
+            <property name="font">
+             <font>
+              <family>FreeMono</family>
+              <weight>75</weight>
+              <bold>true</bold>
+             </font>
+            </property>
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">border-color: rgb(246, 97, 81);
+background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(105, 128, 140, 255), stop:1 rgba(110, 135, 145, 255));
+border-radius: 0px;
+width: 100px;
+height: 50px;
+
+color:rgb(211, 217, 220);</string>
+            </property>
+            <property name="text">
+             <string>Exit</string>
+            </property>
+            <property name="flat">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
