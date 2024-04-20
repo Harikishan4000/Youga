@@ -4,13 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Youga</title>
+
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/style.css')}}">
+    <script type="text/javascript" src="{{ url_for('static',filename='scripts/script.js')}}"></script>
+
+    <script src="https://unpkg.com/htmx.org/dist/htmx.js"></script>
 </head>
 <body>
-    <div class="camera">
-        <!-- <img src="{{ url_for('video') }}" width="50%"> -->
-        <img src="https://imgs.search.brave.com/IkdhK86dcXQ71wp1wBAx8NekNBP-jgZU2ZOb1Ol7Vys/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9pbWFn/ZXMudW5zcGxhc2gu/Y29tL3Bob3RvLTE1/Nzc2ODYzMjM1Njkt/NDBiOTA0MjQwOTli/P3E9ODAmdz0xMDAw/JmF1dG89Zm9ybWF0/JmZpdD1jcm9wJml4/bGliPXJiLTQuMC4z/Jml4aWQ9TTN3eE1q/QTNmREI4TUh4elpX/RnlZMmg4TVRsOGZH/aDFiV0Z1SlRJd2Mz/UmhibVJwYm1kOFpX/NThNSHg4TUh4OGZE/QT0" width="50%">
+    <!-- <div class="camera">
+        <img src="{{ url_for('video') }}" width="50%">
+        <img src="https://imgs.search.brave.com/IkdhK86dcXQ71wp1wBAx8NekNBP-jgZU2ZOb1Ol7Vys/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9pbWFn/ZXMudW5zcGxhc2gu/Y29tL3Bob3RvLTE1/Nzc2ODYzMjM1Njkt/NDBiOTA0MjQwOTli/P3E9ODAmdz0xMDAw/JmF1dG89Zm9ybWF0/JmZpdD1jcm9wJml4/bGliPXJiLTQuMC4z/Jml4aWQ9TTN3eE1q/QTNmREI4TUh4elpX/RnlZMmg4TVRsOGZH/aDFiV0Z1SlRJd2Mz/UmhibVJwYm1kOFpX/NThNSHg4TUh4OGZE/QT0" width="50%"
+         style="border: 5px solid black;">
 
     </div>
+    <div class="probs">
+        <p>{{problems}}</p>
+    </div>
 
+    <div class="test"></div>
+    <button>Click Me!</button> -->
+
+    <div hx-get="/video" hx-target="#result" hx-trigger="every 100ms">Click to Load</div>
+    <div id="result"></div>
+
+    <div class="" style="width: 100px; height: 100px; background-color: aquamarine;"></div>
+
+
+    
 </body>
 </html>
