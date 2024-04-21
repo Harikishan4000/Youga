@@ -1,4 +1,4 @@
-from flask import Flask, render_template, Response, jsonify
+from flask import Flask, render_template, Response, jsonify, request
 import cv2
 import math
 import cv2
@@ -20,21 +20,21 @@ mp_pose=mp.solutions.pose
 
 pose_vid = mp_pose.Pose(min_detection_confidence=0.3, min_tracking_confidence=0.5)
 
-camera=cv2.VideoCapture("http://192.168.1.4:8080/video")
-# camera=cv2.VideoCapture("0")
-option=1
+# camera=cv2.VideoCapture("http://192.168.1.2:8080/video")
+camera=cv2.VideoCapture(0)
+# option=1
 #youtube - Stream live Video from Mobile phone Camera with Python and OPen CV
 #PlayStore - IP webcam
 
 oc=0
-def generate_frames():
+def generate_frames(option=999):
     counter=0
     label=""
     problems=[]
     poseName=""
 
     while True:
-        counter+=1
+        # counter+=1
         landmarks=[]
         success, frame=camera.read()
 
@@ -46,10 +46,10 @@ def generate_frames():
             frame=cv2. flip(frame, 1)
             frame_height, frame_width, _ = frame.shape
             frame=cv2.resize(frame, (int(frame_width*(640/frame_height)), 640))
-            if counter==30:
-                frame, landmarks=my_fc.detectPose(frame, pose_vid, display=False)
+           
+            frame, landmarks=my_fc.detectPose(frame, pose_vid, display=False)
 
-            if landmarks and counter==30:
+            if landmarks :
                 frame, label, problems, poseName, flag=my_fc.classifyPose(landmarks, frame, option, display=False)
                 counter=0    
             ret, buffer=cv2.imencode(".jpg", frame)
@@ -66,15 +66,12 @@ def generate_frames():
 
         html_response = (
                 '<img src="data:image/jpeg;base64,' + base64.b64encode(frame).decode() + '">' +
-                '<div style="color: white">' + label + '</div>'
+                '<div>' + label + '</div>'+
+                '<div>' + str(problems) + '</div>'+
+                '<div>' + poseName + '</div>'
             )
 
         return html_response
-
-        
-
-
-        
 
     camera.release()
     # cv2.destroyAllWindows()
@@ -87,8 +84,12 @@ def index():
 
 @app.route('/video')
 def video():
-    return Response(generate_frames(), mimetype='multipart/x-mixed-replace; boundary=frame')
+    # data=999
+    # data = request.form['data']
+    return Response(generate_frames(3), mimetype='multipart/x-mixed-replace; boundary=frame')
 
 
 if __name__=="__main__":
     app.run(debug=True)
+    
+    
