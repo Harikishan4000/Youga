@@ -1,95 +1,83 @@
-from flask import Flask, render_template, Response, jsonify, request
-import cv2
-import math
-import cv2
-import numpy as np
-from time import time
-import mediapipe as mp
-import matplotlib.pyplot as plt
-import base64
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Youga</title>
+
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/style.css')}}">
+
+    <script src="https://unpkg.com/htmx.org/dist/htmx.js"></script>
+</head>
+<body>
+    <!-- <div class="camera">
+        <img src="{{ url_for('video') }}" width="50%">
+        <img src="https://imgs.search.brave.com/IkdhK86dcXQ71wp1wBAx8NekNBP-jgZU2ZOb1Ol7Vys/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9pbWFn/ZXMudW5zcGxhc2gu/Y29tL3Bob3RvLTE1/Nzc2ODYzMjM1Njkt/NDBiOTA0MjQwOTli/P3E9ODAmdz0xMDAw/JmF1dG89Zm9ybWF0/JmZpdD1jcm9wJml4/bGliPXJiLTQuMC4z/Jml4aWQ9TTN3eE1q/QTNmREI4TUh4elpX/RnlZMmg4TVRsOGZH/aDFiV0Z1SlRJd2Mz/UmhibVJwYm1kOFpX/NThNSHg4TUh4OGZE/QT0" width="50%"
+         style="border: 5px solid black;">
+
+    </div>
+    <div class="probs">
+        <p>{{problems}}</p>
+    </div>
+
+    <div class="test"></div>
+    <button>Click Me!</button> -->
+
+    <div id="frame" hx-get='/video' hx-target="#result" hx-trigger="every 100ms" hx-vals='{"option":"1"}'></div>
+    <div id="result"></div>
+
+     
+
+   <button id="next">Next<button>
+   <button id="1">1<button>
+    <button id="2">2<button>
+
+    
+    <script>
+        let Next=document.getElementById("next")
+        let frame=document.getElementById("frame")
+
+    Next.addEventListener('click', function() {
+    // Function to execute when the button is clicked
+    // window.location.reload();
+
+        frame.setAttribute('hx-vals', '{"option":"3"}');
+        console.log(frame)
 
 
-import functions as my_fc   ## User defined functions
+    // You can add any code you want to execute when the button is clicked here
+});
+
+let one=document.getElementById("1")
+
+    one.addEventListener('click', function() {
+    // Function to execute when the button is clicked
+    // window.location.reload();
+
+        frame.setAttribute('hx-vals', '{"option":"1"}');
+        console.log(frame)
 
 
-app=Flask(__name__)
+    // You can add any code you want to execute when the button is clicked here
+});
+
+let two=document.getElementById("2")
+
+    two.addEventListener('click', function() {
+    // Function to execute when the button is clicked
+    // window.location.reload();
+
+        frame.setAttribute('hx-vals', '{"option":"2"}');
+        console.log(frame)
 
 
-mp_drawing=mp.solutions.drawing_utils
-mp_pose=mp.solutions.pose
+    // You can add any code you want to execute when the button is clicked here
+});
+    </script>
+    
+    <script type="text/javascript" src="{{ url_for('static',filename='scripts/script.js')}}"></script>
 
-pose_vid = mp_pose.Pose(min_detection_confidence=0.3, min_tracking_confidence=0.5)
-
-# camera=cv2.VideoCapture("http://192.168.1.2:8080/video")
-camera=cv2.VideoCapture(0)
-# option=1
-#youtube - Stream live Video from Mobile phone Camera with Python and OPen CV
-#PlayStore - IP webcam
-
-oc=0
-def generate_frames(option=999):
-    counter=0
-    label=""
-    problems=[]
-    poseName=""
-
-    while True:
-        # counter+=1
-        landmarks=[]
-        success, frame=camera.read()
-
-        if not success:
-            print("Unable to access camera")
-            continue
-        else:
-            
-            frame=cv2. flip(frame, 1)
-            frame_height, frame_width, _ = frame.shape
-            frame=cv2.resize(frame, (int(frame_width*(640/frame_height)), 640))
-           
-            frame, landmarks=my_fc.detectPose(frame, pose_vid, display=False)
-
-            if landmarks :
-                frame, label, problems, poseName, flag=my_fc.classifyPose(landmarks, frame, option, display=False)
-                counter=0    
-            ret, buffer=cv2.imencode(".jpg", frame)
-            frame=buffer.tobytes()
-            
-            # cv2.im
-            # show("Youga feed", frame)
-                    
-            # if cv2.waitKey(10) & 0xFF == ord('q'):
-            #     break
-
-        
-        # print("reached")
-
-        html_response = (
-                '<img src="data:image/jpeg;base64,' + base64.b64encode(frame).decode() + '">' +
-                '<div>' + label + '</div>'+
-                '<div>' + str(problems) + '</div>'+
-                '<div>' + poseName + '</div>'
-            )
-
-        return html_response
-
-    camera.release()
-    # cv2.destroyAllWindows()
-
-
-@app.route('/')
-def index():
-    return render_template('index.html')
-
-
-@app.route('/video')
-def video():
-    # data=999
-    # data = request.form['data']
-    return Response(generate_frames(3), mimetype='multipart/x-mixed-replace; boundary=frame')
-
-
-if __name__=="__main__":
-    app.run(debug=True)
     
     
+</body>
+</html>
