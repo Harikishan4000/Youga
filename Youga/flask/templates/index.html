@@ -6,7 +6,6 @@
     <title>Youga</title>
 
     <link rel="stylesheet" href="{{ url_for('static',filename='css/style.css')}}">
-    <script type="text/javascript" src="{{ url_for('static',filename='scripts/script.js')}}"></script>
 
     <script src="https://unpkg.com/htmx.org/dist/htmx.js"></script>
 </head>
@@ -24,12 +23,61 @@
     <div class="test"></div>
     <button>Click Me!</button> -->
 
-    <div hx-get="/video" hx-target="#result" hx-trigger="every 100ms">Click to Load</div>
+    <div id="frame" hx-get='/video' hx-target="#result" hx-trigger="every 100ms" hx-vals='{"option":"1"}'></div>
     <div id="result"></div>
 
-    <div class="" style="width: 100px; height: 100px; background-color: aquamarine;"></div>
+     
+
+   <button id="next">Next<button>
+   <button id="1">1<button>
+    <button id="2">2<button>
+
+    
+    <script>
+        let Next=document.getElementById("next")
+        let frame=document.getElementById("frame")
+
+    Next.addEventListener('click', function() {
+    // Function to execute when the button is clicked
+    // window.location.reload();
+
+        frame.setAttribute('hx-vals', '{"option":"3"}');
+        console.log(frame)
 
 
+    // You can add any code you want to execute when the button is clicked here
+});
+
+let one=document.getElementById("1")
+
+    one.addEventListener('click', function() {
+    // Function to execute when the button is clicked
+    // window.location.reload();
+
+        frame.setAttribute('hx-vals', '{"option":"1"}');
+        console.log(frame)
+
+
+    // You can add any code you want to execute when the button is clicked here
+});
+
+let two=document.getElementById("2")
+
+    two.addEventListener('click', function() {
+    // Function to execute when the button is clicked
+    // window.location.reload();
+
+        frame.setAttribute('hx-vals', '{"option":"2"}');
+        console.log(frame)
+
+
+    // You can add any code you want to execute when the button is clicked here
+});
+    </script>
+    
+    <script type="text/javascript" src="{{ url_for('static',filename='scripts/script.js')}}"></script>
+
+    
     
 </body>
 </html>
